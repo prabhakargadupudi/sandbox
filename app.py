@@ -34,30 +34,6 @@ def webhook():
     if req.get("result").get("action") != "myIntent":
         return {}
     text = req.get("result").get("parameters").get("text")
-##    output = ""
-##
-##    if str(text).lower().find("near") >-1 and str(text).lower().find("me") > -1:
-##        query = text
-##        s = "http://www.google.co.in/search?q="+query+"&oq=petrol+pump&gs_l=psy-ab.3.0.0l3j0i131k1.2650.16739.0.19169.31.24.4.0.0.0.1498.4928.0j2j0j2j2j1j1j1.9.0..3..0...1.1.64.psy-ab..20.11.3920.6..0i67k1j35i39k1.iIX3uFwT7Xc"
-##        a = r.get(s)
-##        entries = a.text.replace("\"", "'").replace("[+]", " ").replace("%26", "&").replace("\u0026amp;", "-").replace("\"", "'").split("role='heading'")
-##        results = {}
-##        for i in entries:
-##            if str(i).find("</div><div>") > -1:
-##                a = i.split("</div><div>")
-##                place = a[0]
-##                ##        print place
-##                if i.find("</div><div><span>") > -1:
-##                    addr = i.split("</div><div><span>")[1]
-##                    if addr.find("</span>") > -1:
-##                        addr = addr.split("</span>")[0]
-##                        results[str(addr)] = str(place)
-##        
-##        for addr,place in results.iteritems():
-##            output = str(output) +"\n"+str(place)+"\n\t"+str(addr)
-##    else:
-##        output = text
-
         
     speech = "Hi Prabhakar,"+str(text)
 
@@ -75,11 +51,11 @@ def webhook():
 
     
     res = {
-        "speech": speech,
+        "speech": filterCommand,
         "displayText": filterCommand,
         # "data": data,
         # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+        "source": "apiai-my-robot-sample"
     }
 
 
