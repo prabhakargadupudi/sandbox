@@ -20,9 +20,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    a = urllib.urlopen("https://digitalrobot.herokuapp.com/")
-    b = a.read()
-    return "Welcome to API.AI"+str(b)
+    return "Welcome to API.AI"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
