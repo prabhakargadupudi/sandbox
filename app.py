@@ -21,49 +21,49 @@ app = Flask(__name__)
 def homepage():
     return "Welcome to API.AI"
 
-##@app.route('/webhook', methods=['POST'])
-##def webhook():
-##    req = request.get_json(silent=True, force=True)
-##
-##    print("Request:")
-##    print(json.dumps(req, indent=4))
-##
-##    
-##
-####    res = processRequest(req)
-##    if req.get("result").get("action") != "myIntent":
-##        return {}
-##    text = req.get("result").get("parameters").get("text")
-##        
-##    speech = "Hi Prabhakar,"+str(text)
-##
-##    voiceCommand = text.lower()
-##    filteredVoiceCMD = voiceCommand
-##    filterCommand =""
-##    if(((voiceCommand.find("lock") > -1 and voiceCommand.find("computer") > -1 )) or (voiceCommand.find("lock")  > -1 and voiceCommand.find("laptop") > -1) or (voiceCommand.find("lock") > -1 and voiceCommand.find("pc") > -1 )):
-##        filterCommand = "lock";
-##    if((voiceCommand.find("shutdown") > -1 or voiceCommand.find("shut down") > -1) and (voiceCommand.find("computer")  > -1 or voiceCommand.find("pc")  > -1 or voiceCommand.find("machine") > -1)):
-##        filterCommand = "shutdown";
-##    if((voiceCommand.find("reboot") > -1 or voiceCommand.find("re boot")  > -1 or voiceCommand.find("re start")  > -1 or voiceCommand.find("restart") > -1) and (voiceCommand.find("computer")  > -1 or voiceCommand.find("pc")  > -1 or voiceCommand.find("machine") > -1)):
-##        filterCommand = "restart";
-##			
-##
-##
-##    
-##    res = {
-##        "speech": filterCommand,
-##        "displayText": filterCommand,
-##        # "data": data,
-##        # "contextOut": [],
-##        "source": "apiai-my-robot-sample"
-##    }
-##
-##
-##    res = json.dumps(res, indent=4)
-##    # print(res)
-##    r = make_response(res)
-##    r.headers['Content-Type'] = 'application/json'
-##    return r
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    req = request.get_json(silent=True, force=True)
+
+    print("Request:")
+    print(json.dumps(req, indent=4))
+
+    
+
+##    res = processRequest(req)
+    if req.get("result").get("action") != "myIntent":
+        return {}
+    text = req.get("result").get("parameters").get("text")
+        
+    speech = "Hi Prabhakar,"+str(text)
+
+    voiceCommand = text.lower()
+    filteredVoiceCMD = voiceCommand
+    filterCommand =""
+    if(((voiceCommand.find("lock") > -1 and voiceCommand.find("computer") > -1 )) or (voiceCommand.find("lock")  > -1 and voiceCommand.find("laptop") > -1) or (voiceCommand.find("lock") > -1 and voiceCommand.find("pc") > -1 )):
+        filterCommand = "lock";
+    if((voiceCommand.find("shutdown") > -1 or voiceCommand.find("shut down") > -1) and (voiceCommand.find("computer")  > -1 or voiceCommand.find("pc")  > -1 or voiceCommand.find("machine") > -1)):
+        filterCommand = "shutdown";
+    if((voiceCommand.find("reboot") > -1 or voiceCommand.find("re boot")  > -1 or voiceCommand.find("re start")  > -1 or voiceCommand.find("restart") > -1) and (voiceCommand.find("computer")  > -1 or voiceCommand.find("pc")  > -1 or voiceCommand.find("machine") > -1)):
+        filterCommand = "restart";
+			
+
+
+    
+    res = {
+        "speech": filterCommand,
+        "displayText": filterCommand,
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-my-robot-sample"
+    }
+
+
+    res = json.dumps(res, indent=4)
+    # print(res)
+    r = make_response(res)
+    r.headers['Content-Type'] = 'application/json'
+    return r
 
 
 if __name__ == '__main__':
