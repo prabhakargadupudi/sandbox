@@ -51,7 +51,7 @@ def webhook():
 
     
     res = {
-        "speech": filterCommand,
+        "speech": speech,
         "displayText": filterCommand,
         # "data": data,
         # "contextOut": [],
